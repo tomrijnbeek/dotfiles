@@ -1,0 +1,48 @@
+[user]
+  name = Tom Rijnbeek
+  email = tom@tomrijnbeek.me
+[push]
+  default = simple
+[color]
+  diff = always
+  branch = always
+  interactive = always
+  status = always
+  ui = true
+[alias]
+  exec = "!exec "
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  le = log --oneline --decorate
+  filelog = log -u
+  fl = log -u
+  dl = "!git ll -1"
+  dlc = diff --cached HEAD^
+  cp = cherry-pick
+  st = status -s
+  cl = clone
+  ci = commit
+  cia = commit --amend
+  co = checkout
+  cob = checkout -b
+  b = branch
+  bd = branch -d
+  count = shortlog -sn
+  d = diff
+  diff = diff --word-diff
+  dc = diff --cached
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+  sl = stash list
+  sa = stash apply
+  sm = submodule
+  smi = submodule update --init
+  smu = submodule update
+  sp = stash pop
+  ss = stash save
+  sync = !git pull $1 && git push
