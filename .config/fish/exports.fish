@@ -10,3 +10,8 @@ set -gx LESS_TERMCAP_se (set_color normal)
 set -gx LESS_TERMCAP_so (set_color -b blue -o yellow)
 set -gx LESS_TERMCAP_ue (set_color normal)
 set -gx LESS_TERMCAP_us (set_color -o green)
+
+# Fisher
+set -gx fisher_path "$HOME/.config/fisher"
+set -gx fish_function_path $fisher_path"/functions" $fish_function_path
+set -gx fish_complete_path $fisher_path"/functions" $fish_complete_path
