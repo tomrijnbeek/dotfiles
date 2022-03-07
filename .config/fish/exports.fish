@@ -1,4 +1,4 @@
-# editor
+# Editor
 set -x EDITOR "code"
 
 # Colorful man pages
@@ -13,5 +13,5 @@ set -gx LESS_TERMCAP_us (set_color -o green)
 
 # Fisher
 set -gx fisher_path "$HOME/.config/fisher"
-set -gx fish_function_path $fisher_path"/functions" $fish_function_path
-set -gx fish_complete_path $fisher_path"/functions" $fish_complete_path
+set fish_function_path $fisher_path"/functions" $fish_function_path
+set fish_complete_path $fisher_path"/functions" $fish_complete_path
