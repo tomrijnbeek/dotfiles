@@ -8,7 +8,7 @@ end
 fish_add_path ~/.local/bin
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+  # Commands to run in interactive sessions can go here
 end
 
 function fish_refresh --description "Refresh fish configuration"

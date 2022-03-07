@@ -1,5 +1,5 @@
 # Editor
-set -x EDITOR "code"
+set -x EDITOR "code -w"
 
 # Colorful man pages
 # from http://pastie.org/pastes/206041/text
