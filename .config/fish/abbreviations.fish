@@ -8,6 +8,9 @@ abbr -a l ls -CF
 # Python
 abbr -a py python3
 abbr -a venv virtualenv --system-site-packages
+abbr -a mkenv virtualenv --system-site-packages .venv
+abbr -a activate activate_venv .venv
+abbr -a django python3 manage.py
 
 # Git
 abbr -a g git
