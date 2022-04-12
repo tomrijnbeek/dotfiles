@@ -15,3 +15,12 @@ set -gx LESS_TERMCAP_us (set_color -o green)
 set -gx fisher_path "$HOME/.config/fisher"
 set fish_function_path $fisher_path"/functions" $fish_function_path
 set fish_complete_path $fisher_path"/functions" $fish_complete_path
+
+# Vagrant access to VirtualBox when running inside WSL2
+if type -q vagrant
+  if test -d "/mnt/c/Program Files/Oracle/VirtualBox"
+    fish_add_path "/mnt/c/Program Files/Oracle/VirtualBox"
+  end
+
+  set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS "1"
+end
