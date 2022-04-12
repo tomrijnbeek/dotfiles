@@ -17,6 +17,9 @@ end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/trb/google-cloud-sdk/path.fish.inc' ]; . '/home/trb/google-cloud-sdk/path.fish.inc'; end
+if test -f '/home/trb/google-cloud-sdk/completion.bash.inc'; and type -q replay
+  replay source '/home/trb/google-cloud-sdk/completion.bash.inc'
+end
 
 # Homebrew
 if test -f "/home/linuxbrew/.linuxbrew/bin/brew"
