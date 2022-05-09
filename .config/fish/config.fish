@@ -35,3 +35,10 @@ if type -q brew
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
   end
 end
+
+# Pyenv
+if type -q pyenv
+  status is-login; and pyenv init --path | source
+  status is-interactive; and pyenv init - | source
+  set -gx CLOUDSDK_PYTHON "/usr/bin/python3"
+end
