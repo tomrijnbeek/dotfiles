@@ -2,6 +2,20 @@
 
 ## Setup
 
+* Install fish
+  
+  ```shell
+  sudo apt-add-repository ppa:fish-shell/release-3
+  sudo apt update
+  sudo apt install fish
+  ```
+
+* Install Linuxbrew
+
+  ```shell
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+
 ### Dependencies
 
 #### Fzf
