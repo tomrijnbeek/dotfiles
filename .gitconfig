@@ -2,7 +2,7 @@
   name = Tom Rijnbeek
   email = tom@tomrijnbeek.me
 [push]
-  default = simple
+	default = current
 [color]
   diff = always
   branch = always
