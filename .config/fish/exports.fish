@@ -24,3 +24,6 @@ if type -q vagrant
 
   set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS "1"
 end
+
+# Bashhub
+set -gx BH_URL "https://bh.tomrijnbeek.me/"

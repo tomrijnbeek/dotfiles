@@ -16,9 +16,9 @@ function fish_refresh --description "Refresh fish configuration"
 end
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/trb/google-cloud-sdk/path.fish.inc' ]; . '/home/trb/google-cloud-sdk/path.fish.inc'; end
-if test -f '/home/trb/google-cloud-sdk/completion.bash.inc'; and type -q replay
-  replay source '/home/trb/google-cloud-sdk/completion.bash.inc'
+if [ -f "$HOME/google-cloud-sdk/path.fish.inc" ]; . "$HOME/google-cloud-sdk/path.fish.inc"; end
+if test -f "$HOME/google-cloud-sdk/completion.bash.inc"; and type -q replay
+  replay source "$HOME/google-cloud-sdk/completion.bash.inc"
 end
 
 # Homebrew
@@ -41,4 +41,9 @@ if type -q pyenv
   status is-login; and pyenv init --path | source
   status is-interactive; and pyenv init - | source
   set -gx CLOUDSDK_PYTHON "/usr/bin/python3"
+end
+
+# Bashhub.com Installation
+if [ -f "$HOME/.bashhub/bashhub.fish" ]
+  source "$HOME/.bashhub/bashhub.fish"
 end
