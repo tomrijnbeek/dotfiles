@@ -89,3 +89,8 @@ if bind -M insert > /dev/null 2>&1
   bind -M insert \cg\ch ghh
   bind -M insert \cg\cr gr
 end
+
+function clean_merged_branches -d "Git: clean all branches merged with the specified branch"
+  set branch $argv[1]
+  git branch --merged $branch | grep -v "$branch\|*" | xargs -n 1 git branch -d
+end
