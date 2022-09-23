@@ -1,14 +1,31 @@
+[core]
+  pager = delta
+[pager]
+  show = delta
+  diff = delta
+  blame = delta
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[add.interactive]
+  useBuiltin = false
 [user]
   name = Tom Rijnbeek
   email = tom@tomrijnbeek.me
 [push]
 	default = current
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
 [color]
   diff = always
   branch = always
   interactive = always
   status = always
   ui = true
+[delta]
+  navigate = true
+  light = false
 [alias]
   exec = "!exec "
   ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
