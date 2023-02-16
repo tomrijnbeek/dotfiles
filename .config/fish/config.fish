@@ -48,3 +48,8 @@ end
 if [ -f "$HOME/.bashhub/bashhub.fish" ]
   source "$HOME/.bashhub/bashhub.fish"
 end
+
+# NVM
+if type -q nvm
+  nvm -s use lts
+end
