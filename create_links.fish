@@ -10,6 +10,7 @@ end
 
 make_link $basedir/.gitconfig ~/.gitconfig
 make_link $basedir/.tmux.conf ~/.tmux.conf
+make_link $basedir/.git_template ~/.git_template
 
 for i in $basedir/.config/*
   make_link $i ~/.config/(basename $i)

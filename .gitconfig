@@ -1,5 +1,8 @@
 [core]
   pager = delta
+[init]
+  defaultBranch = main
+  templatedir = "~/.git_template"
 [pager]
   show = delta
   diff = delta
