@@ -1,5 +1,7 @@
 [core]
   pager = delta
+[init]
+  defaultBranch = main
 [pager]
   show = delta
   diff = delta
