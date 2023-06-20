@@ -2,7 +2,9 @@ source "$HOME/.config/fish/exports.fish"
 source "$HOME/.config/fish/abbreviations.fish"
 
 for f in $fisher_path/conf.d/*
-  source $f
+  if test -f $f
+    source $f
+  end
 end
 
 fish_add_path ~/.local/bin
