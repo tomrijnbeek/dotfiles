@@ -2,6 +2,17 @@
 
 ## Setup
 
+### macOS
+
+* Install Homebrew
+* Install fish
+
+  ```shell
+  brew install fish
+  ```
+
+### Linux
+
 * Install fish
 
   ```shell
@@ -19,6 +30,15 @@
 ### Dependencies
 
 #### Fzf
+
+On macOS:
+
+```shell
+brew install fzf
+# Run the outputted fzf install command in a fish session
+```
+
+On Linux:
 
 ```shell
 sudo apt-get install fd-find bat

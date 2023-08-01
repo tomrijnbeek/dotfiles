@@ -1,4 +1,4 @@
-set -l basedir (dirname (readlink -m (status --current-filename)))
+set -l basedir (dirname (greadlink -m (status --current-filename)))
 
 function make_link
   echo "$argv[1] -> $argv[2]"

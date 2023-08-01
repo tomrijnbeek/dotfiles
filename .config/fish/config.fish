@@ -28,6 +28,9 @@ end
 if test -f "/home/linuxbrew/.linuxbrew/bin/brew"
   eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
+if test -f "/opt/homebrew/bin/brew"
+  eval (/opt/homebrew/bin/brew shellenv)
+end
 
 if type -q brew
   if test -d (brew --prefix)"/share/fish/completions"
@@ -52,6 +55,6 @@ if [ -f "$HOME/.bashhub/bashhub.fish" ]
 end
 
 # NVM
-if type -q nvm
+if type -q nvm; and type -q node
   nvm -s use lts
 end
