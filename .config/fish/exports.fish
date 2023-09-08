@@ -30,8 +30,3 @@ set -gx BH_URL "https://bh.tomrijnbeek.me/"
 
 # GCloud
 set -gx USE_GKE_GCLOUD_AUTH_PLUGIN True
-
-# SDKMan
-if test -d "~/.sdkman"
-  set -g __sdkman_custom_dir ~/.sdkman
-end

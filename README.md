@@ -59,8 +59,8 @@ Delta is a better Git diff engine, and can be installed through Linuxbrew:
 brew install git-delta
 ```
 
-#### SDKMan
+#### jEnv (optional)
 
 ```shell
-curl -s "https://get.sdkman.io" | bash
+brew install jenv
 ```

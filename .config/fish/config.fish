@@ -58,3 +58,9 @@ end
 if type -q nvm; and type -q node
   nvm -s use lts
 end
+
+# jEnv
+if type -q jenv
+  fish_add_path ~/.jenv/bin
+  source (jenv init -|psub)
+end
