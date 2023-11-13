@@ -62,5 +62,5 @@ end
 # jEnv
 if type -q jenv
   fish_add_path ~/.jenv/bin
-  source (jenv init -|psub)
+  status --is-interactive; and jenv init - fish | source
 end
