@@ -11,6 +11,12 @@
   brew install fish
   ```
 
+* Install stow
+
+  ```shell
+  brew install stow
+  ```
+
 ### Linux
 
 * Install fish
@@ -57,6 +63,18 @@ Delta is a better Git diff engine, and can be installed through Linuxbrew:
 
 ```shell
 brew install git-delta
+```
+
+#### zoxide (optional)
+
+```shell
+brew install zoxide
+```
+
+#### eza (optional)
+
+```shell
+brew install eza
 ```
 
 #### jEnv (optional)
