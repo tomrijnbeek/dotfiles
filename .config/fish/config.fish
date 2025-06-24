@@ -64,3 +64,12 @@ if type -q jenv
   fish_add_path ~/.jenv/bin
   status --is-interactive; and jenv init - fish | source
 end
+
+# Jetbrains toolbox
+if test -d "~/Library"
+  fish_add_path ~/Library/Application\ Support/JetBrains/Toolbox/scripts
+end
+
+if type -q zoxide
+  zoxide init fish | source
+end

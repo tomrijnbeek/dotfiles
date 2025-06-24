@@ -91,6 +91,14 @@ if bind -M insert > /dev/null 2>&1
 end
 
 function clean_merged_branches -d "Git: clean all branches merged with the specified branch"
+  is_in_git_repo || return
   set branch $argv[1]
-  git branch --merged $branch | grep -v "$branch\|*" | xargs -n 1 git branch -d
+  git branch --merged $branch --no-color | grep -v "$branch\|*" | xargs -n 1 git branch -d
+end
+
+function clean_merged_branches_custom -d "Git: clean all branches merged with the specified branch, allowing editing"
+  is_in_git_repo || return
+  set branch $argv[1]
+  git branch --merged master --no-color | grep -v "$branch\|*" | string trim > /tmp/merged-branches
+  eval $EDITOR /tmp/merged-branches; and xargs git branch -d < /tmp/merged-branches
 end
