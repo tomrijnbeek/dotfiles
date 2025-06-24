@@ -2,7 +2,9 @@
 
 ## Setup
 
-### macOS
+### Install dependencies
+
+#### macOS
 
 * Install Homebrew
 * Install fish
@@ -17,7 +19,14 @@
   brew install stow
   ```
 
-### Linux
+* Install fzf
+
+  ```shell
+  brew install fzf
+  # Run the outputted fzf install command in a fish session
+  ```
+
+#### Linux
 
 * Install fish
 
@@ -33,52 +42,27 @@
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   ```
 
-### Dependencies
+  * Install fzf
 
-#### Fzf
+  ```shell
+  sudo apt-get install fd-find bat
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+  ```
 
-On macOS:
+#### Brew packages
 
 ```shell
-brew install fzf
-# Run the outputted fzf install command in a fish session
+brew install git-delta zoxide eza jenv
 ```
 
-On Linux:
+### Set up dotfiles
+
+This assumes the repository is cloned to `~/dotfiles` and that you are starting in `~`.
 
 ```shell
-sudo apt-get install fd-find bat
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-```
-
-#### Fisher
-
-Run `fisher_update.fish` to install fisher. Fisher will automatically
-self-update and install all the dependencies in the correct directory.
-
-#### Delta
-
-Delta is a better Git diff engine, and can be installed through Linuxbrew:
-
-```shell
-brew install git-delta
-```
-
-#### zoxide (optional)
-
-```shell
-brew install zoxide
-```
-
-#### eza (optional)
-
-```shell
-brew install eza
-```
-
-#### jEnv (optional)
-
-```shell
-brew install jenv
+cd dotfiles
+stow .
+fish fisher_update.fish
+fish configure_tide.fish
 ```
