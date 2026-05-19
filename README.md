@@ -53,7 +53,7 @@
 #### Brew packages
 
 ```shell
-brew install git-delta zoxide eza jenv
+brew install git-delta zoxide eza jenv fnm
 ```
 
 ### Set up dotfiles
