@@ -53,6 +53,8 @@
   d = diff
   diff = diff --word-diff
   dc = diff --cached
+  hist = "!f() { for i in $(seq 9 $END); do echo "@{-$i}: `git rev-parse --abbrev-ref @{-$i}`"; done }; f "
+  back = checkout @{-1}
   r = reset
   r1 = reset HEAD^
   r2 = reset HEAD^^
@@ -67,3 +69,8 @@
   sp = stash pop
   ss = stash save
   sync = !git pull $1 && git push
+[trace2]
+	eventTarget = af_unix:/Users/trijnbeek/.gittrace/trace.sock
+	eventBrief = true
+	eventNesting = 1
+	configparams = custom.metacommands
