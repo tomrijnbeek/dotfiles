@@ -54,11 +54,6 @@ if [ -f "$HOME/.bashhub/bashhub.fish" ]
   source "$HOME/.bashhub/bashhub.fish"
 end
 
-# NVM
-if type -q nvm; and type -q node
-  nvm -s use lts
-end
-
 # jEnv
 if type -q jenv
   fish_add_path ~/.jenv/bin
