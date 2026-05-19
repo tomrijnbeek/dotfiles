@@ -1,12 +1,6 @@
 source "$HOME/.config/fish/exports.fish"
 source "$HOME/.config/fish/abbreviations.fish"
 
-for f in $fisher_path/conf.d/*
-  if test -f $f
-    source $f
-  end
-end
-
 fish_add_path ~/.local/bin
 fish_add_path ~/.krew/bin
 
@@ -61,7 +55,7 @@ if type -q jenv
 end
 
 # Jetbrains toolbox
-if test -d "~/Library"
+if test -d ~/Library/Application\ Support/JetBrains/Toolbox/scripts
   fish_add_path ~/Library/Application\ Support/JetBrains/Toolbox/scripts
 end
 
