@@ -21,10 +21,10 @@
 [diff]
   colorMoved = default
 [color]
-  diff = always
-  branch = always
-  interactive = always
-  status = always
+  diff = auto
+  branch = auto
+  interactive = auto
+  status = auto
   ui = true
 [delta]
   navigate = true
