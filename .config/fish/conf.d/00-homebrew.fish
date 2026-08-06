@@ -1,10 +1,12 @@
 # Sourced from conf.d, and named to sort first, so that brew's bin is on PATH
 # before any other conf.d snippet that relies on a brew-installed tool.
+# Pass the shell explicitly: without it brew guesses from $SHELL and falls back to
+# POSIX syntax, which fish cannot parse.
 if test -f "/home/linuxbrew/.linuxbrew/bin/brew"
-  eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)
 end
 if test -f "/opt/homebrew/bin/brew"
-  eval (/opt/homebrew/bin/brew shellenv)
+  eval (/opt/homebrew/bin/brew shellenv fish)
 end
 
 if type -q brew
