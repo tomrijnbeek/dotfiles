@@ -11,10 +11,7 @@ set -gx LESS_TERMCAP_so (set_color -b blue -o yellow)
 set -gx LESS_TERMCAP_ue (set_color normal)
 set -gx LESS_TERMCAP_us (set_color -o green)
 
-# Fisher
-set -gx fisher_path "$HOME/.config/fisher"
-set fish_function_path $fisher_path"/functions" $fish_function_path
-set fish_complete_path $fisher_path"/functions" $fish_complete_path
+# Fisher is wired up in conf.d/05-fisher.fish, which has to run at conf.d time
 
 # Vagrant access to VirtualBox when running inside WSL2
 if type -q vagrant
