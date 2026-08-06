@@ -23,9 +23,11 @@ end
 # Pyenv. --no-rehash on both: the generated script ends in a `pyenv rehash` call
 # that costs ~170ms per shell. Run `pyenv rehash` by hand after installing a
 # version. --path stays so non-interactive login shells still get the shims.
+# `fish` is passed explicitly for the same reason as brew shellenv: without it
+# pyenv guesses from $SHELL and emits bash, which fish then fails to parse.
 if type -q pyenv
-  status is-login; and pyenv init --path --no-rehash | source
-  status is-interactive; and pyenv init - --no-rehash | source
+  status is-login; and pyenv init --path --no-rehash fish | source
+  status is-interactive; and pyenv init - --no-rehash fish | source
   set -gx CLOUDSDK_PYTHON "/usr/bin/python3"
 end
 

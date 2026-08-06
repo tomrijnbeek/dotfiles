@@ -4,5 +4,8 @@
 .+\.sh
 configure_tide\.fish
 fisher_update\.fish
+check\.fish
+install_hooks\.fish
+\.githooks
 
 ^/README.*
