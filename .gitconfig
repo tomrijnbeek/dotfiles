@@ -13,6 +13,11 @@
 [user]
   name = Tom Rijnbeek
   email = tom@tomrijnbeek.me
+# Machine-specific overrides: work identity, tracing sockets, anything absolute.
+# Missing files are ignored silently, and later values win, so this overrides the
+# email above when present.
+[include]
+  path = ~/.gitconfig.local
 [push]
 	default = current
 	autoSetupRemote = true
@@ -69,8 +74,3 @@
   sp = stash pop
   ss = stash save
   sync = !git pull $1 && git push
-[trace2]
-	eventTarget = af_unix:/Users/trijnbeek/.gittrace/trace.sock
-	eventBrief = true
-	eventNesting = 1
-	configparams = custom.metacommands
