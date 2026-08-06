@@ -1,5 +1,18 @@
-function clean_merged_branches -d "Git: clean all branches merged with the specified branch"
+function clean_merged_branches -d "Git: delete every branch already merged into the given branch"
   is_in_git_repo || return
-  set branch $argv[1]
-  git branch --merged $branch --no-color | grep -v "$branch\|*" | xargs -n 1 git branch -d
+
+  if test -z "$argv[1]"
+    echo "clean_merged_branches: needs a branch to compare against" >&2
+    return 1
+  end
+
+  set -l stale (_merged_branches $argv[1])
+  if test (count $stale) -eq 0
+    echo "No branches merged into $argv[1]."
+    return 0
+  end
+
+  for branch in $stale
+    git branch -d $branch
+  end
 end
