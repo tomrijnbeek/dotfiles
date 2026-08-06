@@ -37,7 +37,13 @@ if type -q tmux
   set -l socket check-(random)
   set -l output (tmux -L $socket -f $repo/.tmux.conf new-session -d 2>&1)
   set -l rc $status
+
+  # Ask the server where its socket is before killing it: kill-server unlinks
+  # nothing, so without this every run leaves a dead check-* socket behind.
+  set -l socket_path (tmux -L $socket display-message -p '#{socket_path}' 2>/dev/null)
   tmux -L $socket kill-server 2>/dev/null
+  test -n "$socket_path" -a -S "$socket_path"; and rm -f $socket_path
+
   test $rc -ne 0 -o -n "$output"; and fail "tmux config does not parse:" $output
 end
 
