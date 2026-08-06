@@ -9,12 +9,13 @@ if test -f "/opt/homebrew/bin/brew"
   eval (/opt/homebrew/bin/brew shellenv fish)
 end
 
+# One `brew --prefix` rather than four: each call is a ~45ms ruby start.
+# shellenv already exported HOMEBREW_PREFIX, so prefer that.
 if type -q brew
-  if test -d (brew --prefix)"/share/fish/completions"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
-  end
+  set -l brew_prefix $HOMEBREW_PREFIX
+  test -n "$brew_prefix"; or set brew_prefix (brew --prefix)
 
-  if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+  for dir in $brew_prefix/share/fish/completions $brew_prefix/share/fish/vendor_completions.d
+    test -d $dir; and set -gx fish_complete_path $fish_complete_path $dir
   end
 end

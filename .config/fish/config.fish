@@ -20,10 +20,12 @@ end
 
 # Homebrew lives in conf.d/00-homebrew.fish, which fish sources before this file
 
-# Pyenv
+# Pyenv. --no-rehash on both: the generated script ends in a `pyenv rehash` call
+# that costs ~170ms per shell. Run `pyenv rehash` by hand after installing a
+# version. --path stays so non-interactive login shells still get the shims.
 if type -q pyenv
-  status is-login; and pyenv init --path | source
-  status is-interactive; and pyenv init - | source
+  status is-login; and pyenv init --path --no-rehash | source
+  status is-interactive; and pyenv init - --no-rehash | source
   set -gx CLOUDSDK_PYTHON "/usr/bin/python3"
 end
 
@@ -32,10 +34,22 @@ if [ -f "$HOME/.bashhub/bashhub.fish" ]
   source "$HOME/.bashhub/bashhub.fish"
 end
 
-# jEnv
-if type -q jenv
+# jEnv. Both probes use `command` to bypass fish's function autoloader: any bare
+# reference to `jenv` pulls in Homebrew's vendor_functions.d/jenv.fish, which runs
+# `jenv rehash` and costs ~300ms on every shell. `jenv init -` defines its own
+# equivalent wrapper, so that file is never needed.
+if command -q jenv
   fish_add_path ~/.jenv/bin
-  status --is-interactive; and jenv init - fish | source
+  if status --is-interactive
+    # jenv's own generated script calls `jenv refresh-plugins` a few lines before
+    # it defines its `jenv` function, and that bare call is what autoloads the
+    # vendor file. Defining a stub first keeps the autoloader out of it; the
+    # generated script overwrites this immediately.
+    function jenv; command jenv $argv; end
+    command jenv init - --no-rehash fish | source
+  else
+    contains $HOME/.jenv/shims $PATH; or set -gx PATH $HOME/.jenv/shims $PATH
+  end
 end
 
 # Jetbrains toolbox
