@@ -42,7 +42,7 @@
 #### Brew packages
 
 ```shell
-brew install git-delta zoxide eza jenv fnm fzf
+brew install git-delta zoxide eza jenv fnm fzf lazygit
 ```
 
 No shell integration step is needed for fzf: `conf.d/10-fzf.fish` sources
