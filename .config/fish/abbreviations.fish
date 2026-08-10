@@ -1,11 +1,14 @@
 # Folder navigation
 abbr -a up cd ..
 
+# eza's --icons, --classify and --color all take an *optional* WHEN value, so the
+# bare flags swallow a trailing path as that value. Attaching `=auto` is what makes
+# `ll somedir` work.
 if type -q eza
   alias ls="eza"
-  abbr -a ll eza -alF --icons
-  abbr -a la eza -A --icons
-  abbr -a l eza -F --colour
+  abbr -a ll eza -alF=auto --icons=auto
+  abbr -a la eza -A --icons=auto
+  abbr -a l eza -F=auto
 else
   abbr -a ll ls -alF
   abbr -a la ls -A
