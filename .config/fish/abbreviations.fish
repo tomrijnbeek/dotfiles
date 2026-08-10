@@ -3,10 +3,14 @@ abbr -a up cd ..
 
 # eza's --icons, --classify and --color all take an *optional* WHEN value, so the
 # bare flags swallow a trailing path as that value. Attaching `=auto` is what makes
-# `ll somedir` work.
+# `ll somedir` work. The alias is interactive-only because fish sources this file
+# for scripts too, where eza's short flags mean different things to ls's (-h is
+# --header, -S is --blocksize, -t demands a FIELD).
 if type -q eza
-  alias ls="eza"
-  abbr -a ll eza -alF=auto --icons=auto
+  status is-interactive; and alias ls="eza"
+  abbr -a ll eza -alF=auto --icons=auto --no-user
+  # --git costs a libgit2 status scan: ~0.6s in a 12k-file repo, so not on `ll`.
+  abbr -a llg eza -alF=auto --icons=auto --no-user --git
   abbr -a la eza -A --icons=auto
   abbr -a l eza -F=auto
 else
