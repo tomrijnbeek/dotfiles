@@ -31,7 +31,42 @@ set -l startup (env -i HOME=$HOME TERM=xterm PATH=/usr/bin:/bin:/usr/sbin:/sbin 
   $fish_bin -l -c true 2>&1)
 test -n "$startup"; and fail "login shell is not silent:" $startup
 
-# 3. tmux config parses, on its own socket so an already-running server carrying
+# 3. The same, from a directory carrying a Node version file. Check 2 cannot see
+#    this: fnm announces a switch only when there is a version to apply, and
+#    $HOME has none.
+#
+#    The version has to differ from the default. The child inherits no fnm state
+#    through env -i, so it starts on the default alias, and fnm says nothing when
+#    the file asks for the version already in use. That also means the check can
+#    only run with two versions installed; with one it is skipped.
+if type -q fnm
+  set -l default (fnm default 2>/dev/null)
+  set -l node_version
+  for installed in (fnm ls | string match -gr '^\* (v[0-9][^ ]*)')
+    test "$installed" = "$default"; and continue
+    set node_version $installed
+    break
+  end
+
+  if test -n "$node_version"
+    set -l dir (mktemp -d)
+    echo $node_version >$dir/.node-version
+
+    # The child has to *start* in $dir, so the cwd change cannot be pushed into
+    # its -c argument. This fires the outer shell's own PWD hook, harmlessly.
+    pushd $dir
+    set -l startup (env -i HOME=$HOME TERM=xterm PATH=/usr/bin:/bin:/usr/sbin:/sbin \
+      $fish_bin -l -c true 2>&1)
+    popd
+
+    rm -f $dir/.node-version
+    rmdir $dir
+
+    test -n "$startup"; and fail "login shell is not silent in a Node directory:" $startup
+  end
+end
+
+# 4. tmux config parses, on its own socket so an already-running server carrying
 #    this config cannot mask a problem.
 if type -q tmux
   set -l socket check-(random)
